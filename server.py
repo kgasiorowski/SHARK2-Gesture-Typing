@@ -290,6 +290,8 @@ def get_best_word(valid_words, integration_scores):
             if (final < min):
                 final = min
                 keyIndex = i
+            # This is redundant. The if is already at the end of the for,
+            # so if it isn't tripped the loop will just continue anyway
             else:
                 continue
 
