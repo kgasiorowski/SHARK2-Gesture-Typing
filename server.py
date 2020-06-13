@@ -53,9 +53,9 @@ def generate_sample_points(points_X, points_Y):
     distance = np.cumsum(np.sqrt(np.ediff1d(points_X, to_begin=0) ** 2 + np.ediff1d(points_Y, to_begin=0) ** 2))
     # basically when words like mm or ii have no path / little path, use centroid
     if (distance[-1] == 0):
-        for i in range(100):
-            sample_points_X.append(points_X[0])
-            sample_points_Y.append(points_Y[0])
+        # There's actually an easier and cleaner way to do this in python:
+        sample_points_X = [points_X[0]] * 100
+        sample_points_Y = [points_Y[0]] * 100
     else:
         # get the proportion of line segments
         distance = distance / distance[-1]
