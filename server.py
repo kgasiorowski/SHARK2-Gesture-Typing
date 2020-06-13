@@ -311,11 +311,16 @@ def shark2():
 
     print(data)
 
-    gesture_points_X = []
-    gesture_points_Y = []
-    for i in range(len(data)):
-        gesture_points_X.append(data[i]['x'])
-        gesture_points_Y.append(data[i]['y'])
+    gesture_points_X = [data_point['x'] for data_point in data]
+    gesture_points_Y = [data_point['y'] for data_point in data]
+    # This is called list comprehension.
+    # TLDR, it's a way to do an operation on each item in a list and return that as a list.
+    # For example, if we have a list a = [1, 2, 3]
+    # And we did:
+    # b = [value*10 for value in a]
+    # b would have [10, 20, 30]
+    # This is one of my favorite features of python
+
     gesture_points_X = [gesture_points_X]
     gesture_points_Y = [gesture_points_Y]
 
