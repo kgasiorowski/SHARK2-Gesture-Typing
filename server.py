@@ -113,13 +113,19 @@ def do_pruning(gesture_points_X, gesture_points_Y, template_sample_points_X, tem
     # If they are BOTH <= threshold, add a copy to the respective valid template sample points and add the respective
     # word to valid_words
     for i in range(len(template_sample_points_X)):
-        #start-start
-        start_start = euclid(gesture_points_X[0][0], gesture_points_Y[0][0],
-                            template_sample_points_X[i][0], template_sample_points_Y[i][0])
-        #end-end
-        end_end = euclid(gesture_points_X[0][len(gesture_points_X)-1], gesture_points_Y[0][len(gesture_points_Y)-1],
-                            template_sample_points_X[i][-1], template_sample_points_Y[i][-1])
-        if (start_start <= threshold and end_end <= threshold):
+
+        # For sake of readability, you could do this with the params
+        start_start = euclid(gesture_points_X[0][0],
+                             gesture_points_Y[0][0],
+                             template_sample_points_X[i][0],
+                             template_sample_points_Y[i][0])
+
+        end_end = euclid(gesture_points_X[0][len(gesture_points_X)-1],
+                         gesture_points_Y[0][len(gesture_points_Y)-1],
+                         template_sample_points_X[i][-1],
+                         template_sample_points_Y[i][-1])
+
+        if start_start <= threshold and end_end <= threshold:
             valid_words.append(words[i])
             valid_template_sample_points_X.append(template_sample_points_X[i])
             valid_template_sample_points_Y.append(template_sample_points_Y[i])
