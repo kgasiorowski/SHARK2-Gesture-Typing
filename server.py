@@ -132,8 +132,18 @@ def do_pruning(gesture_points_X, gesture_points_Y, template_sample_points_X, tem
             continue
     return valid_words, valid_template_sample_points_X, valid_template_sample_points_Y
 
-def get_shape_scores(gesture_sample_points_X, gesture_sample_points_Y, valid_template_sample_points_X,
-                     valid_template_sample_points_Y):
+# This is a bit extreme, but there's a few reasons you may want to format your long functions this way
+# 1. Readability
+# 2. Whenever you change one parameter, or just the function name git will mark the whole line as changed.
+#    This means that future programmers could be confused about what you were trying to do - the commit says
+#    "changed get shape scores" but is it possible that something else was changed here? It just keeps the
+#    the git history a little bit cleaner.
+def get_shape_scores(
+                     gesture_sample_points_X,
+                     gesture_sample_points_Y,
+                     valid_template_sample_points_X,
+                     valid_template_sample_points_Y
+                    ):
     '''Get the shape score for every valid word after pruning.
 
     In this function, we should compare the sampled input gesture (containing 100 points) with every single valid
